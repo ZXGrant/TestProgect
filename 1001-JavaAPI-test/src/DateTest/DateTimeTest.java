@@ -1,6 +1,4 @@
-package DateTest; /**
- * 版权所有 (c) 2019，中金支付有限公司
- */
+package DateTest;
 
 import utils.TimeUtil;
 
@@ -19,10 +17,14 @@ import java.util.Date;
  * </pre>
  */
 public class DateTimeTest {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException{
+        /**
+         * 1、比较两个时间的大小，把时间转换成字符串，在比较
+         */
         String time0="20190824104152";
         String time1=time0.substring(0,8);
         String time2="20190823";
+
        /* if(Integer.parseInt(time)>=Integer.parseInt(time2)){
             System.out.println("t1 >>>>>>");
         }*/
@@ -31,12 +33,20 @@ public class DateTimeTest {
            System.out.println("1>>>>>>>>>2");
        }
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
-        String format = sdf.format(new Date());
-        System.out.println("........"+format);
+       String[] args1=new String[]{"4520","20190916163955500"};
+
+       //getFromToTime(args1);
+        Calendar calendar=Calendar.getInstance();
+        System.out.println(calendar.getTime());
+
+
+
     }
 
-    public String[] getFromToTime(String[] arguments) throws ParseException {
+    /**
+     *1、这个Calander对象其实很好的提现了面向对象的思维
+     */
+    public static String[] getFromToTime(String[] arguments) throws ParseException {
         Calendar calendar = Calendar.getInstance();
         // 若参数大于1，则指定结束时间
         if (arguments.length > 1) {
@@ -44,6 +54,7 @@ public class DateTimeTest {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
             sdf.setLenient(false);
             calendar.setTime(sdf.parse(date));
+
         }
 
         calendar.add(Calendar.MINUTE, -20);
@@ -55,6 +66,8 @@ public class DateTimeTest {
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         String fromTime = TimeUtil.getFormattedDate(calendar.getTime(), TimeUtil.PATTERN_TIME17);
+
+        System.out.println(fromTime+"------"+toTime);
         return new String[] { fromTime, toTime };
     }
 
