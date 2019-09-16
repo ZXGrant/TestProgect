@@ -6,7 +6,7 @@ package math_test;
 import java.util.Random;
 
 /**
- * 信息说明
+ * 信息说明：一些算法，随机数，取值范围，数据类型int,long等数学类的问题测试
  * <pre>
  * Modify Information:
  * Author          Date          Description
